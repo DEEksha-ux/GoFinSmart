@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import Finance
+from app.models import UserDetails
 
 app=create_app()
 
