@@ -12,6 +12,7 @@ class Signup(FlaskForm):
 
 login_bp=Blueprint('login', __name__)
 
+#For first time user
 @login_bp.route('/', methods=['GET', 'POST'])
 def signup():
     form=Signup()
@@ -26,6 +27,7 @@ def signup():
         return redirect(url_for('fin.view_fin'))
     return render_template('home.html')
 
+#For already registered user logging in again
 @login_bp.route('/login', methods=['GET', 'POST'])
 def login():
     form=Signup()

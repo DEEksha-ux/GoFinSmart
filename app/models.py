@@ -9,3 +9,4 @@ class FinDetails(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     amount=db.Column(db.Integer, nullable=False)
     type=db.Column(db.String(50), nullable=False, default='Expenditure')
+    category=db.Column(db.String(100))
