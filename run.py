@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import UserDetails
+from app.models import UserDetails, FinDetails
 
 app=create_app()
 
