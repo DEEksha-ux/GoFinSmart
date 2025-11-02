@@ -19,6 +19,12 @@ def signup():
     if form.validate_on_submit():
         name=form.name.data
         password=form.password.data
+        
+        existing_user=UserDetails.query.filter_by(name=name).first()
+        if (existing_user):
+            flash('Entered username already exists. Please choose another name.','danger')
+            return redirect(url_for('login.signup'))
+
         new_user=UserDetails(name=name, password=password)
         db.session.add(new_user)
         db.session.commit()
