@@ -58,10 +58,10 @@ def view_chart():
     plt.close()
 
     data2=FinDetails.query.with_entities(FinDetails.amount, FinDetails.category).filter_by(category='income').all()
-    amount2=[x[0] for x in data]
-    category2=[x[1] for x in data]
+    amount2=[x[0] for x in data2]
+    category2=[x[1] for x in data2]
 
-    plt.pie(amount, label=category)
+    plt.pie(amount2, label=category2)
     plt.title("Earning distribution")
 
     pie_buf2=io.BytesIO()
@@ -71,7 +71,7 @@ def view_chart():
     pie_buf2.close()
     plt.close()
 
-    return render_template(charts.html, pie_img=pie_img, pie_img2=pie_img2)
+    return render_template('charts.html', pie_img=pie_img, pie_img2=pie_img2)
 
 
 
