@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+View your finances
+{% endblock %}
+
+{% block content %}
+
+<h3>Add your finances here!</h3>
+<form action="{{url_for('fin.add_fin')}}" method="POST">
+    {{form.csrf_token}}
+    <div class="mb-3">{{form.amount.label}} {{form.amount}}</div>
+    <div class="mb-3">{{form.type.label}} {{form.type}}</div>
+    <div class="mb-3">{{form.category.label}} {{form.category}}</div>
+    <p>{{form.submit()}}</p>
+</form> <br>
+
+{% if details %}
+<table class="table table-striped">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">FinDetail</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Type</th>
+            <th scope="col">Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for detail in details %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{loop.amount}}</td>
+            <td>{{loop.type}}</td>
+            <td>{{loop.category}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No FinDetails added yet. Add one above!</p>
+{% endif %}
+{% endblock %}

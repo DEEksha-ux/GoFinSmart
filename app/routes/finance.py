@@ -6,7 +6,7 @@ from wtforms import StringField, RadioField, SubmitField, IntegerField
 from wtforms.validators import InputRequired
 import io
 import base64
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 
 class MoneyDetails(FlaskForm):
