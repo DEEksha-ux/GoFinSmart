@@ -10,7 +10,9 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:mypass@localhost/GoFinSmart_db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
-    db.__init__(app)
+    db.init_app(app)
+
+    from app.models import UserDetails, FinDetails
 
     from app.routes.home import login_bp
     from app.routes.finance import fin_bp

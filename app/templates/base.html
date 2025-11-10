@@ -30,7 +30,7 @@
     <main>
         {% with messages=get_flashed_messages(with_categories=True) %}
             {% for msg in messages %}
-                <div>msg</div>
+                <div>{{msg}}</div>
             {% endfor %}
         {% endwith %}
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, request, session, Blueprint, flash
+from flask import render_template, url_for, redirect, session, Blueprint, flash
 from app import db
 from app.models import UserDetails
 from flask_wtf import FlaskForm
@@ -31,7 +31,7 @@ def signup():
         session['user']=name
         flash(f"Hi {name}, You have successfully signed in!", "success")
         return redirect(url_for('fin.view_fin'))
-    return render_template('home.html')
+    return render_template('home.html', form=form)
 
 #For already registered user logging in again
 @login_bp.route('/login', methods=['GET', 'POST'])
@@ -51,11 +51,11 @@ def login():
             flash("Incorrect name or password, please try again","danger")
             return redirect(url_for('login.login'))
         
-    return render_template('home.html')
+    return render_template('login.html', form=form)
 
 @login_bp.route('/logout')
 def logout():
-    session.pop('user')
+    session.pop('user', None)
     flash("You logged out successfully", 'success')
     return redirect(url_for('login.login'))
             

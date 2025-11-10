@@ -6,7 +6,9 @@ from wtforms import StringField, RadioField, SubmitField, IntegerField
 from wtforms.validators import InputRequired
 import io
 import base64
+import matplotlib
 import matplotlib.pyplot as plt
+matplotlib.use('Agg')
 
 
 class MoneyDetails(FlaskForm):
@@ -15,19 +17,14 @@ class MoneyDetails(FlaskForm):
     category=StringField('Category')
     submit=SubmitField('Add')
 
-fin_bp=Blueprint(__name__, 'fin')
+fin_bp=Blueprint('fin', __name__)
 
-@fin_bp.route('/view_fin')
+@fin_bp.route('/view_fin', methods=['GET', 'POST'])
 def view_fin():
     if 'user' not in session:
         return redirect(url_for('login.signup'))
     details=FinDetails.query.all()
-    return render_template('view_fin.html', details=details)
 
-@fin_bp.route('/add_fin', methods=['GET', 'POST'])
-def add_fin():
-    if 'user' not in session:
-        return redirect(url_for('login.signup'))
     form=MoneyDetails()
     if form.validate_on_submit():
         amount=form.amount.data
@@ -37,7 +34,7 @@ def add_fin():
         db.session.add(new_fin)
         db.session.commit()
         flash("Your details have been added successfully!", 'success')
-    return redirect(url_for('fin.view_fin'))
+    return render_template('view_fin.html', details=details, form=form)
 
 @fin_bp.route('/view_chart')
 def view_chart():
@@ -47,7 +44,7 @@ def view_chart():
     amount=[x[0] for x in data]
     category=[x[1] for x in data]
 
-    plt.pie(amount, label=category)
+    plt.pie(amount, labels=category)
     plt.title("Spending distribution")
 
     pie_buf=io.BytesIO()
@@ -61,7 +58,7 @@ def view_chart():
     amount2=[x[0] for x in data2]
     category2=[x[1] for x in data2]
 
-    plt.pie(amount2, label=category2)
+    plt.pie(amount2, labels=category2)
     plt.title("Earning distribution")
 
     pie_buf2=io.BytesIO()

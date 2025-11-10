@@ -7,7 +7,7 @@ View your finances
 {% block content %}
 
 <h3>Add your finances here!</h3>
-<form action="{{url_for('fin.add_fin')}}" method="POST">
+<form action="{{url_for('fin.view_fin')}}" method="POST">
     {{form.csrf_token}}
     <div class="mb-3">{{form.amount.label}} {{form.amount}}</div>
     <div class="mb-3">{{form.type.label}} {{form.type}}</div>
@@ -36,6 +36,8 @@ View your finances
         {% endfor %}
     </tbody>
 </table>
+<br><br>
+<h6><a href="{{url_for('fin.view_chart')}}">Visualize your finances here!</a></h6>
 {% else %}
 <p>No FinDetails added yet. Add one above!</p>
 {% endif %}

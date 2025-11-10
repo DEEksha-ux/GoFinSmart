@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Home
+    Login
 {% endblock %}
 
 {% block content %}
 
-<!--For first time user-->
-    <form action="/" method="POST">
+<!--For already registerd user-->
+    <form action="{{url_for('login.login')}}" method="POST">
         {{form.csrf_token}}
         <div class="mb-3">{{form.name.label}} {{form.name}}</div>
         <div class="mb-3">{{form.password.label}} {{form.password}}</div>
         <p>{{form.submit()}}</p>
-    </form>
+    </form><br><br>
+    
 {% endblock %}
