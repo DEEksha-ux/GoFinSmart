@@ -29,9 +29,9 @@ View your finances
         {% for detail in details %}
         <tr>
             <td>{{loop.index}}</td>
-            <td>{{loop.amount}}</td>
-            <td>{{loop.type}}</td>
-            <td>{{loop.category}}</td>
+            <td>{{detail.amount}}</td>
+            <td>{{detail.type}}</td>
+            <td>{{detail.category}}</td>
         </tr>
         {% endfor %}
     </tbody>

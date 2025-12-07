@@ -23,14 +23,14 @@ fin_bp=Blueprint('fin', __name__)
 def view_fin():
     if 'user' not in session:
         return redirect(url_for('login.signup'))
-    details=FinDetails.query.all()
+    details=FinDetails.query.filter_by(user_id=session['user']).all()
 
     form=MoneyDetails()
     if form.validate_on_submit():
         amount=form.amount.data
         type=form.type.data
         category=form.category.data
-        new_fin=FinDetails(amount=amount, type=type, category=category)
+        new_fin=FinDetails(amount=amount, type=type, category=category, user_id=session['user'])
         db.session.add(new_fin)
         db.session.commit()
         flash("Your details have been added successfully!", 'success')

@@ -8,6 +8,7 @@ class UserDetails(db.Model):
 
 class FinDetails(db.Model):
     id=db.Column(db.Integer, primary_key=True)
+    user_id=db.Column(db.Integer, db.ForeignKey('user_details.id'), nullable=False)
     amount=db.Column(db.Integer, nullable=False)
     type=db.Column(db.String(50), nullable=False, default='Expenditure')
     category=db.Column(db.String(100))

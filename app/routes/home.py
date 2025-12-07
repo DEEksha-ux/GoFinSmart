@@ -28,7 +28,7 @@ def signup():
         new_user=UserDetails(name=name, password=password)
         db.session.add(new_user)
         db.session.commit()
-        session['user']=name
+        session['user']=UserDetails.query.filter_by(name=name).first().id
         flash(f"Hi {name}, You have successfully signed in!", "success")
         return redirect(url_for('fin.view_fin'))
     return render_template('home.html', form=form)
@@ -41,10 +41,10 @@ def login():
         name=form.name.data
         password=form.password.data
         
-        user=UserDetails.query.filter_by(name=name).first()
+        user=UserDetails.query.filter_by(name=name).first().id
         
         if user and user.password==password:
-            session['user']=name
+            session['user']=user.id
             flash(f"Hi {name}, Welcome back!", "success")
             return redirect(url_for('fin.view_fin'))
         else:
