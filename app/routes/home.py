@@ -41,7 +41,7 @@ def login():
         name=form.name.data
         password=form.password.data
         
-        user=UserDetails.query.filter_by(name=name).first().id
+        user=UserDetails.query.filter_by(name=name).first()
         
         if user and user.password==password:
             session['user']=user.id

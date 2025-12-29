@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Home
+Home
 {% endblock %}
 
 {% block content %}
 
 <!--For first time user-->
-    <form action="{{url_for('login.signup')}}" method="POST">
-        {{form.csrf_token}}
-        <div class="mb-3">{{form.name.label}} {{form.name}}</div>
-        <div class="mb-3">{{form.password.label}} {{form.password}}</div>
-        <p>{{form.submit()}}</p>
-    </form><br> <br>
-    
+
+<div class="form-box">
+    <div class="inner-form-box">
+        <form action="{{url_for('login.signup')}}" method="POST">
+            {{form.csrf_token}}
+            {{form.name.label}} {{form.name}}
+            {{form.password.label}} {{form.password}}
+            {{form.submit(class="btn")}}
+        </form>
+    </div>
+</div>
+
+
 {% endblock %}

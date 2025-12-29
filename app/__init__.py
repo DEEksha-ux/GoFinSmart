@@ -22,5 +22,10 @@ def create_app():
 
     app.register_blueprint(login_bp)
     app.register_blueprint(fin_bp)
+    print(app.root_path)
 
+    
     return app
+
+
+

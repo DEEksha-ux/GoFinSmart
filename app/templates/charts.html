@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Charts
+Charts
 {% endblock %}
 
 {% block content %}
-    <h3>Here are your expenditures!</h3>
-    <img src="data:image/png;base64,{{pie_img|safe}}" alt="Spending dist. pie chart">
-    <br> <br> <br>
-    <h3>Here are your earnings!</h3>
-    <img src="data:image/png;base64,{{pie_img2|safe}}" alt="Income dist. pie chart">
+
+
+<h3>Here are your expenditures!</h3>
+<img src="data:image/png;base64,{{pie_img|safe}}" alt="Spending dist. pie chart">
+<h3>Here are your earnings!</h3>
+<img src="data:image/png;base64,{{pie_img2|safe}}" alt="Income dist. pie chart">
+
+
 {% endblock %}

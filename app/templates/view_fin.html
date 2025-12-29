@@ -6,23 +6,28 @@ View your finances
 
 {% block content %}
 
+
 <h3>Add your finances here!</h3>
-<form action="{{url_for('fin.view_fin')}}" method="POST">
-    {{form.csrf_token}}
-    <div class="mb-3">{{form.amount.label}} {{form.amount}}</div>
-    <div class="mb-3">{{form.type.label}} {{form.type}}</div>
-    <div class="mb-3">{{form.category.label}} {{form.category}}</div>
-    <p>{{form.submit()}}</p>
-</form> <br>
+<div class="form-box">
+    <div class="inner-form-box">
+        <form action="{{url_for('fin.view_fin')}}" method="POST">
+            {{form.csrf_token}}
+            {{form.amount.label}} {{form.amount}}
+            {{form.type.label}} {{form.type}}
+            {{form.category.label}} {{form.category}}
+            {{form.submit(class="btn")}}
+        </form>
+    </div>
+</div>
 
 {% if details %}
-<table class="table table-striped">
+<table>
     <thead>
-        <tr class="table-dark">
-            <th scope="col">FinDetail</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Type</th>
-            <th scope="col">Category</th>
+        <tr>
+            <th>FinDetail</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Category</th>
         </tr>
     </thead>
     <tbody>
@@ -41,4 +46,6 @@ View your finances
 {% else %}
 <p>No FinDetails added yet. Add one above!</p>
 {% endif %}
+
+
 {% endblock %}
