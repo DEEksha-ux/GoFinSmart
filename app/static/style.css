@@ -39,7 +39,7 @@ body {
 .nav-panel i{
     height: 60px;
     width: 60px;
-    color: white;
+    background-color: rgb(74, 135, 228);
 }
 
 .logo {
@@ -135,3 +135,51 @@ form{
     font-weight: 500;
     padding: 2px;
 }
+
+h3{
+    margin-bottom: 15px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+table{
+    width: 100%;
+    margin-top: 100px;
+    text-align: center;
+}
+
+tr, th{
+    background-color: #023047;
+    color: white;
+    border-bottom: 1px solid #ddd;
+    padding: 4px;
+}
+
+td{
+    padding: 1px;
+}
+
+tr:nth-child(odd){
+    background-color: #8ecae6;
+    color: black;
+}
+
+.fin-msg{
+    color: black;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.view:hover{
+    color: #0077b6;
+}
+
+img{
+    margin: 10px 15px;
+}
+
+.chart{
+    display: inline-grid;
+    grid-template-columns: auto auto;
+}
+

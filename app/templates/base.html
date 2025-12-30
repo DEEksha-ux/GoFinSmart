@@ -30,9 +30,9 @@
         {% with messages=get_flashed_messages(with_categories=True) %}
         {% for category, msg in messages %}
         {% if category == "success" %}
-        <div style="background-color: rgb(29, 202, 13, 0.5); height: 35px; font-size: 14px; display: flex; align-items: center; position: relative; top: 10px; width: 100%;">{{msg}}</div>
+        <div style="background-color: rgb(29, 202, 13, 0.5); height: 40px; font-size: 14px; position: absolute; top: 90px; width: 100%; padding-left: 5px;">{{msg}}</div>
         {% else %}
-        <div style="background-color: rgb(240, 62, 62, 0.5); height: 35px; font-size: 14px; display: flex; align-items: center;">{{msg}}</div>
+        <div style="background-color: rgb(240, 62, 62, 0.5); height: 40px; font-size: 14px; position: absolute; top: 90px; width: 100%; padding-left: 5px;">{{msg}}</div>
         {% endif %}
         {% endfor %}
         {% endwith %}

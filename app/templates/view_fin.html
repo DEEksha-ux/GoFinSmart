@@ -42,9 +42,9 @@ View your finances
     </tbody>
 </table>
 <br><br>
-<h6><a href="{{url_for('fin.view_chart')}}">Visualize your finances here!</a></h6>
+<h6><a href="{{url_for('fin.view_chart')}}" class="fin-msg view">Visualize your finances here!</a></h6>
 {% else %}
-<p>No FinDetails added yet. Add one above!</p>
+<p class="fin-msg">No FinDetails added yet. Add one above!</p>
 {% endif %}
 
 

@@ -33,7 +33,7 @@ def view_fin():
         new_fin=FinDetails(amount=amount, type=type, category=category, user_id=session['user'])
         db.session.add(new_fin)
         db.session.commit()
-        flash("Your details have been added successfully!", 'success')
+        flash("Your details have been added successfully! Please refresh to reflect changes.", 'success')
     return render_template('view_fin.html', details=details, form=form)
 
 @fin_bp.route('/view_chart')
