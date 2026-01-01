@@ -8,6 +8,7 @@ import io
 import base64
 import matplotlib
 import matplotlib.pyplot as plt
+from sqlalchemy import func
 matplotlib.use('Agg')
 
 
@@ -23,7 +24,6 @@ fin_bp=Blueprint('fin', __name__)
 def view_fin():
     if 'user' not in session:
         return redirect(url_for('login.signup'))
-    details=FinDetails.query.filter_by(user_id=session['user']).all()
 
     form=MoneyDetails()
     if form.validate_on_submit():
@@ -33,18 +33,19 @@ def view_fin():
         new_fin=FinDetails(amount=amount, type=type, category=category, user_id=session['user'])
         db.session.add(new_fin)
         db.session.commit()
-        flash("Your details have been added successfully! Please refresh to reflect changes.", 'success')
+        flash("Your details have been added successfully!", 'success')
+    details=FinDetails.query.filter_by(user_id=session['user']).all()
     return render_template('view_fin.html', details=details, form=form)
 
 @fin_bp.route('/view_chart')
 def view_chart():
     if 'user' not in session:
         return redirect(url_for('login.signup'))
-    data=FinDetails.query.with_entities(FinDetails.amount, FinDetails.category).filter_by(category='expenditure').all()
+    data=FinDetails.query.with_entities(func.sum(FinDetails.amount), FinDetails.category).filter_by(type='expenditure', user_id=session['user']).group_by(FinDetails.category).all()
     amount=[x[0] for x in data]
     category=[x[1] for x in data]
 
-    plt.pie(amount, labels=category)
+    plt.pie(amount, labels=category, autopct="%1.1f%%")
     plt.title("Spending distribution")
 
     pie_buf=io.BytesIO()
@@ -54,11 +55,11 @@ def view_chart():
     pie_buf.close()
     plt.close()
 
-    data2=FinDetails.query.with_entities(FinDetails.amount, FinDetails.category).filter_by(category='income').all()
+    data2=FinDetails.query.with_entities(func.sum(FinDetails.amount), FinDetails.category).filter_by(type='income', user_id=session['user']).group_by(FinDetails.category).all()
     amount2=[x[0] for x in data2]
     category2=[x[1] for x in data2]
 
-    plt.pie(amount2, labels=category2)
+    plt.pie(amount2, labels=category2, autopct="%1.1f%%")
     plt.title("Earning distribution")
 
     pie_buf2=io.BytesIO()

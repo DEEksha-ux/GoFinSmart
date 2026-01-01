@@ -13,7 +13,6 @@
 <body>
     <header>
         <div class="nav-panel">
-            <i class="fa-solid fa-indian-rupee-sign"></i>
             <div class="logo border">
                 <span class="go">Go</span>
                 <span class="finsmart">FinSmart</span>
@@ -30,9 +29,9 @@
         {% with messages=get_flashed_messages(with_categories=True) %}
         {% for category, msg in messages %}
         {% if category == "success" %}
-        <div style="background-color: rgb(29, 202, 13, 0.5); height: 40px; font-size: 14px; position: absolute; top: 90px; width: 100%; padding-left: 5px;">{{msg}}</div>
+        <div style="background-color: rgb(29, 202, 13, 0.5); height: 40px; font-size: 14px; position: absolute; top: 90px; width: 100%; padding-left: 5px; margin-bottom: 20px;">{{msg}}</div>
         {% else %}
-        <div style="background-color: rgb(240, 62, 62, 0.5); height: 40px; font-size: 14px; position: absolute; top: 90px; width: 100%; padding-left: 5px;">{{msg}}</div>
+        <div style="background-color: rgb(240, 62, 62, 0.5); height: 40px; font-size: 14px; position: absolute; top: 90px; width: 100%; padding-left: 5px; margin-bottom: 20px;">{{msg}}</div>
         {% endif %}
         {% endfor %}
         {% endwith %}

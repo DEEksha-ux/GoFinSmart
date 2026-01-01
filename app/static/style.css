@@ -17,6 +17,10 @@ body {
     min-height: 100vh;
 }
 
+main{
+    overflow: auto;
+}
+
 .border:hover {
     border: 2px solid white;
     padding: 2px;
