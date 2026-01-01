@@ -13,7 +13,7 @@ This is a personal finance tracker app, which will help users keep track of thei
 <br><br>
 <b>Tech Stack Used</b><br>
 <ol>
-  <li><Backend
+  <li>Backend
   <ul>
     <li>Python (Flask)</li>
     <li>Matplotlib (For visualizing and comparing income and expenditure in various categories)</li>
