@@ -4,7 +4,7 @@ This is a personal finance tracker app, which will help users keep track of thei
 <ul>
   <li>Users can create an account, and login and logout</li>
   <li>Details authenticated and passwords secured through Flask WTF</li>
-  <li>Current user saved in memory</li>
+  <li>Current user saved in session</li>
   <li>Users can add the amount of money, type(expenditure/income), and category</li>
   <li>User information as well as each user's financial details stored in an SQL table</li>
   <li>Added financial details displayed on the screen in table format</li>
